@@ -1,0 +1,37 @@
+#include <iostream>
+#include <stack>  // użyjemy stosu do przechowywania reszt z dzielenia
+
+using namespace std;
+
+void zmieniacz(int n) {
+    stack<int> binarneLiczby;
+    
+    if (n == 0) {
+        cout << "0";
+        return;
+    }
+
+    while (n > 0) {
+        binarneLiczby.push(n % 2);  // przechowuj reszty w stosie
+        n /= 2;  // dziel liczbe przez 2
+    }
+
+    // zdejmowanie elementów ze stosu (wypisanie liczby binarnej)
+    while (!binarneLiczby.empty()) {
+        cout << binarneLiczby.top();
+        binarneLiczby.pop();
+    }
+    cout << endl;
+}
+
+int main() {
+    int liczba;
+    
+    cout << "Podaj liczbe w systemie dziesietnym: ";
+    cin >> liczba;
+
+    cout << "Liczba w systemie binarnym: ";
+    zmieniacz(liczba);
+
+    return 0;
+}
